@@ -37,7 +37,6 @@ const playlistSchema = new mongoose.Schema(
       type: Number,
       default: 0,
     },
-
     collaborators: [
       {
         type: mongoose.Schema.Types.ObjectId,

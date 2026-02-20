@@ -9,13 +9,11 @@ This API provides endpoints for managing users, songs, artists, albums, and play
 ## Features
 
 - **User Management**
-
   - Registration and authentication with JWT
   - Profile management with profile picture upload
   - Like songs, follow artists, and follow playlists
 
 - **Songs**
-
   - Upload songs with metadata (title, artist, album, duration, etc.)
   - Audio file storage in Cloudinary
   - Categorize songs by genre
@@ -23,21 +21,18 @@ This API provides endpoints for managing users, songs, artists, albums, and play
   - Lyrics storage and retrieval
 
 - **Artists**
-
   - Artist profiles with images and bio
   - Catalog of songs and albums
   - Artist verification status
   - Track follower count
 
 - **Albums**
-
   - Create and manage albums with cover images
   - Associate songs with albums
   - Album metadata (release date, genre, description)
   - Track likes
 
 - **Playlists**
-
   - Create public and private playlists
   - Collaborative playlists with multiple users
   - Add/remove songs
@@ -79,7 +74,6 @@ This API provides endpoints for managing users, songs, artists, albums, and play
 ### Association Details
 
 1. **User**
-
    - Has many liked songs (Song)
    - Has many liked albums (Album)
    - Has many followed artists (Artist)
@@ -88,7 +82,6 @@ This API provides endpoints for managing users, songs, artists, albums, and play
    - Can collaborate on many playlists (Playlist)
 
 2. **Song**
-
    - Belongs to one artist (Artist)
    - Can belong to one album (Album)
    - Can have many featured artists (Artist)
@@ -96,14 +89,12 @@ This API provides endpoints for managing users, songs, artists, albums, and play
    - Can be liked by many users (User)
 
 3. **Artist**
-
    - Has many songs (Song)
    - Has many albums (Album)
    - Can be featured on many songs (Song)
    - Can be followed by many users (User)
 
 4. **Album**
-
    - Belongs to one artist (Artist)
    - Has many songs (Song)
    - Can be liked by many users (User)
@@ -136,19 +127,16 @@ This API provides endpoints for managing users, songs, artists, albums, and play
 ### Data Flow Description
 
 1. **Client-API Interaction**:
-
    - Client sends HTTP requests to the API endpoints
    - API validates requests and authenticates users via JWT
    - API returns appropriate responses with status codes
 
 2. **API-Database Interaction**:
-
    - API uses Mongoose schemas to structure data
    - Performs CRUD operations on MongoDB collections
    - Handles relationships between collections through references
 
 3. **Media Management Flow**:
-
    - Client uploads media (images/audio) through the API
    - API processes files with Multer
    - Files are uploaded to Cloudinary

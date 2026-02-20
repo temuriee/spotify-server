@@ -1,12 +1,13 @@
 const mongoose = require("mongoose");
 
+// Schema
 const userSchema = new mongoose.Schema(
   {
     name: {
       type: String,
-      required: [true, "Please Provide A Name"],
-      maxlength: [40, "Name Should'nt Be More Than 40 Characters"],
-      minlength: [2, "Name Should Be At Least 2 Characters"],
+      required: [true, "Please provide a name"],
+      maxlength: [40, "Name should not be more than 40 characters"],
+      minlength: [2, "Name should be at least 2 characters"],
     },
     email: {
       type: String,
@@ -33,27 +34,34 @@ const userSchema = new mongoose.Schema(
       type: Boolean,
       default: false,
     },
-
-    likedSongs: {
-      type: mongoose.Schema.Types.ObjectId,
-      ref: "Song",
-    },
-    likedAlbum: {
-      type: mongoose.Schema.Types.ObjectId,
-      ref: "Album",
-    },
-    followedArtists: {
-      type: mongoose.Schema.Types.ObjectId,
-      ref: "Artist",
-    },
-    followedPlaylists: {
-      type: mongoose.Schema.Types.ObjectId,
-      ref: "Playlist",
-    },
+    // Relation Schema
+    likedSongs: [
+      {
+        type: mongoose.Schema.Types.ObjectId,
+        ref: "Song",
+      },
+    ],
+    likedAlbums: [
+      {
+        type: mongoose.Schema.Types.ObjectId,
+        ref: "Album",
+      },
+    ],
+    followedArtists: [
+      {
+        type: mongoose.Schema.Types.ObjectId,
+        ref: "Artist",
+      },
+    ],
+    followedPlaylists: [
+      {
+        type: mongoose.Schema.Types.ObjectId,
+        ref: "Playlist",
+      },
+    ],
   },
   { timestamps: true },
 );
 
 const User = mongoose.model("User", userSchema);
-
 module.exports = User;

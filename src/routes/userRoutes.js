@@ -3,8 +3,8 @@ const { registerUser } = require("../controllers/userController");
 
 const userRouter = express.Router();
 
-//Public Route
-//Register User
+// Public route
+// Register User
 userRouter.post("/register", registerUser);
 
 module.exports = userRouter;
